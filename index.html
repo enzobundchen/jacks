@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jack's Pub · Araranguá/SC — Noites inesquecíveis</title>
+<meta name="description" content="Jack's Pub em Araranguá/SC: Sabadão do Jack's, vanerão, sertanejo e música ao vivo. Quintas e sábados a partir das 22h, no Jardim das Avenidas.">
+<meta property="og:title" content="Jack's Pub · Noites inesquecíveis">
+<meta property="og:description" content="Quintas e sábados a partir das 22h · Araranguá/SC">
+<meta property="og:image" content="img/capa.jpg">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lilita+One&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0a;
+  --ink:#121010;
+  --panel:#171311;
+  --orange:#e2762b;
+  --amber:#ffa640;
+  --flame:#ff5a1f;
+  --cream:#f5efe6;
+  --muted:#a89b8c;
+  --line:rgba(226,118,43,.22);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:Montserrat,system-ui,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+.serif{font-family:Cinzel,Georgia,serif;font-weight:900;letter-spacing:.02em}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:.75rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--orange)}
+.kicker::before,.kicker.both::after{content:"";width:34px;height:2px;background:var(--orange)}
+h2.title{font-family:Cinzel,serif;font-weight:900;font-size:clamp(2.4rem,5.6vw,4.4rem);line-height:1.02;margin:16px 0 20px}
+h2.title em{font-style:normal;color:var(--orange)}
+.lead{color:var(--muted);font-size:1.06rem;max-width:560px}
+
+/* flyer-style 3D title (como nos posts) */
+.flyer-type{font-family:"Lilita One",Impact,sans-serif;line-height:.86;text-transform:uppercase;letter-spacing:.01em;
+  background:linear-gradient(180deg,#fff6c9 0%,#ffd04a 30%,#ff9a1f 58%,#ff4d12 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 3px 0 #5a1500) drop-shadow(0 6px 0 #2b0a00) drop-shadow(0 14px 22px rgba(255,90,31,.45))}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 30px;border-radius:0;font-weight:800;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;transition:transform .3s var(--ease),box-shadow .3s,background .3s,color .3s;white-space:nowrap;position:relative;overflow:hidden}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-orange{background:var(--orange);color:#160800;box-shadow:0 12px 30px -10px rgba(226,118,43,.8)}
+.btn-orange::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
+.btn-orange:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(226,118,43,.95)}
+.btn-orange:hover::after{transform:translateX(120%)}
+.btn-line{border:2px solid var(--cream);color:var(--cream)}
+.btn-line:hover{background:var(--cream);color:var(--black);transform:translateY(-3px)}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto;z-index:50;padding:18px 0;transition:background .4s,padding .4s,box-shadow .4s}
+.nav.scrolled{background:rgba(10,10,10,.9);backdrop-filter:blur(12px);padding:10px 0;box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:52px;height:52px;transition:width .4s,height .4s;filter:drop-shadow(0 0 14px rgba(226,118,43,.35))}
+.nav.scrolled .brand img{width:42px;height:42px}
+.brand span{font-family:Cinzel,serif;font-weight:900;font-size:1.25rem;letter-spacing:.06em}
+.menu{display:flex;gap:30px;font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.menu a{opacity:.8;transition:opacity .3s,color .3s}
+.menu a:hover{opacity:1;color:var(--orange)}
+.nav .btn{padding:12px 22px;font-size:.75rem}
+.burger{display:none;width:46px;height:46px;border:1px solid var(--line);border-radius:0;background:none;color:var(--cream);cursor:pointer}
+.burger i{display:block;width:20px;height:2px;background:currentColor;margin:5px auto;transition:transform .3s,opacity .3s}
+.nav.open .burger i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav.open .burger i:nth-child(2){opacity:0}
+.nav.open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;isolation:isolate;padding:130px 0 0}
+.hero-photo{position:absolute;inset:0;z-index:-3;background:url(img/capa.jpg) center/cover no-repeat;animation:kenburns 26s ease-in-out infinite alternate;transform-origin:60% 40%}
+@keyframes kenburns{from{transform:scale(1.05)}to{transform:scale(1.18) translateX(-2%)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(60% 55% at 50% 42%,rgba(10,10,10,.35),rgba(10,10,10,.85) 75%),
+  linear-gradient(180deg,rgba(10,10,10,.7),rgba(10,10,10,.2) 30%,rgba(10,10,10,.85) 80%,var(--black))}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(45% 30% at 50% 38%,rgba(255,110,30,.18),transparent 70%)}
+/* luzes de palco */
+.rig{position:absolute;top:0;left:0;right:0;height:56%;z-index:-1;pointer-events:none;display:flex;justify-content:space-around;padding:0 4%}
+.rig .lamp{position:relative;width:14px;height:14px;margin-top:92px;border-radius:50%;background:#ffd9a8;box-shadow:0 0 12px 4px rgba(255,166,64,.9),0 0 40px 14px rgba(226,118,43,.5);animation:chase 3.2s infinite}
+.rig .lamp::after{content:"";position:absolute;left:50%;top:6px;width:180px;height:62vh;transform:translateX(-50%);background:linear-gradient(180deg,rgba(255,170,80,.28),transparent 75%);clip-path:polygon(47% 0,53% 0,100% 100%,0 100%);filter:blur(6px);mix-blend-mode:screen}
+.rig .lamp:nth-child(2n)::after{transform:translateX(-50%) rotate(12deg);transform-origin:top}
+.rig .lamp:nth-child(3n)::after{transform:translateX(-50%) rotate(-14deg);transform-origin:top}
+.rig .lamp:nth-child(1){animation-delay:0s}.rig .lamp:nth-child(2){animation-delay:.2s}.rig .lamp:nth-child(3){animation-delay:.4s}.rig .lamp:nth-child(4){animation-delay:.6s}.rig .lamp:nth-child(5){animation-delay:.8s}.rig .lamp:nth-child(6){animation-delay:1s}.rig .lamp:nth-child(7){animation-delay:1.2s}
+@keyframes chase{0%,100%{opacity:.35}12%{opacity:1}35%{opacity:.5}}
+.hero-center{text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero-logo{width:clamp(210px,30vw,330px);filter:drop-shadow(0 0 40px rgba(226,118,43,.45)) drop-shadow(0 20px 40px rgba(0,0,0,.8));animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.hero h1{font-family:Cinzel,serif;font-weight:900;font-size:clamp(2.1rem,6vw,4.6rem);line-height:1;letter-spacing:.04em;margin:30px 0 14px;text-shadow:0 4px 30px rgba(0,0,0,.8)}
+.hero h1 span{color:var(--orange)}
+.hero .sub{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;font-size:.82rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#e8dccd;margin-bottom:36px}
+.hero .sub b{color:var(--orange)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+
+/* ticket / countdown */
+.ticket{margin:70px auto 0;width:min(980px,100% - 32px);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;padding:22px 28px;background:linear-gradient(90deg,rgba(23,19,17,.95),rgba(30,20,14,.95));border:1px solid var(--line);border-radius:0;position:relative;margin-bottom:60px}
+.ticket .when small{display:flex;align-items:center;gap:8px;font-size:.68rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.ticket .when strong{display:block;font-family:"Lilita One";font-size:1.9rem;line-height:1.05;color:var(--amber);text-transform:uppercase;letter-spacing:.01em}
+.ticket .when span{font-size:.85rem;color:var(--muted)}
+.cd{display:flex;justify-content:center;gap:10px}
+.cd div{min-width:68px;text-align:center;padding:8px 6px;border-left:1px dashed var(--line)}
+.cd div:first-child{border:none}
+.cd b{display:block;font-family:Cinzel;font-weight:900;font-size:2rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.cd span{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+
+section{position:relative}
+.sec{padding:clamp(90px,12vw,150px) 0}
+
+/* seções alternadas: fundo quente que entra e sai do preto sem emenda */
+.slats{background:
+  radial-gradient(60% 45% at 85% 35%,rgba(226,118,43,.10),transparent 70%),
+  radial-gradient(50% 40% at 10% 75%,rgba(226,118,43,.06),transparent 70%),
+  linear-gradient(180deg,var(--black),var(--ink) 22%,var(--ink) 78%,var(--black))}
+
+/* SABADÃO */
+.sabadao .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.sabadao .flyer-type{font-size:clamp(4.4rem,11vw,8.6rem);display:block;margin:18px 0 6px;transform:rotate(-3deg);transform-origin:left}
+.sabadao .flyer-type small{display:block;font-size:.42em;-webkit-text-fill-color:var(--cream);color:var(--cream);background:none;margin:0 0 6px .1em;filter:none;letter-spacing:.06em}
+.ribbon{display:inline-block;background:linear-gradient(90deg,#ff9a1f,var(--orange));color:#1a0800;font-family:"Lilita One";font-size:1.4rem;padding:6px 22px;text-transform:uppercase;transform:rotate(-3deg);box-shadow:0 8px 20px -6px rgba(255,120,30,.7);margin-bottom:28px}
+.perks{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:32px 0 36px}
+.perk{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid var(--line);border-radius:0;background:rgba(0,0,0,.25)}
+.perk svg{width:26px;height:26px;color:var(--orange);flex:none;margin-top:2px}
+.perk b{display:block;font-size:.92rem}
+.perk span{font-size:.8rem;color:var(--muted)}
+.note{font-size:.75rem;color:var(--muted);margin-top:-18px;margin-bottom:30px}
+.fan{position:relative;height:clamp(440px,48vw,580px)}
+.fan figure{position:absolute;top:50%;left:50%;width:62%;aspect-ratio:4/5;border-radius:0;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.08);transition:transform .8s var(--ease)}
+.fan figure img{width:100%;height:100%;object-fit:cover}
+.fan figure:nth-child(1){transform:translate(-95%,-46%) rotate(-12deg);z-index:1}
+.fan figure:nth-child(2){transform:translate(-5%,-54%) rotate(10deg);z-index:2}
+.fan figure:nth-child(3){transform:translate(-50%,-50%) rotate(-1deg);z-index:3}
+.fan:hover figure:nth-child(1){transform:translate(-118%,-44%) rotate(-16deg)}
+.fan:hover figure:nth-child(2){transform:translate(18%,-56%) rotate(14deg)}
+.fan:hover figure:nth-child(3){transform:translate(-50%,-53%) rotate(0) scale(1.04)}
+
+/* AGENDA */
+.nights{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px}
+.night{position:relative;min-height:520px;border-radius:0;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:36px;isolation:isolate;border:1px solid var(--line)}
+.night .bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform 1.2s var(--ease);filter:grayscale(.75) sepia(.6) saturate(1.8) hue-rotate(-12deg) brightness(.9)}
+.night::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,10,10,.1) 0%,rgba(10,10,10,.55) 45%,rgba(10,10,10,.96) 100%)}
+.night:hover .bg{transform:scale(1.08)}
+.night .tag{position:absolute;top:24px;left:24px;font-size:.7rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:8px 14px;border-radius:0;background:rgba(10,10,10,.7);border:1px solid var(--line)}
+.night .tag.hot{background:var(--flame);border-color:var(--flame);color:#fff;display:none}
+.night.is-next .tag.hot{display:block;left:auto;right:24px}
+.night .day{font-size:clamp(3.8rem,8vw,6rem)}
+.night .hour{font-family:Cinzel;font-weight:900;font-size:1.1rem;letter-spacing:.14em;color:var(--orange);margin:10px 0 14px}
+.night p{color:#d9cfc2;max-width:420px}
+
+/* PALCO / ARTISTAS */
+.lineup{list-style:none;margin-top:50px;border-top:1px solid var(--line)}
+.lineup li{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 6px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;cursor:default}
+.lineup li::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--orange),#ff9a1f);transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease);z-index:-1}
+.lineup li:hover::before{transform:scaleY(1)}
+.lineup li:hover{color:#140700}
+.lineup .name{font-family:"Lilita One";font-size:clamp(1.9rem,5vw,3.6rem);line-height:1;text-transform:uppercase;transition:transform .5s var(--ease)}
+.lineup li:hover .name{transform:translateX(14px)}
+.lineup .genre{font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;opacity:.7;text-align:right}
+
+/* ESPAÇO */
+.space{display:grid;grid-template-columns:1.25fr .75fr;gap:0;border-radius:0;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
+.space .photo{position:relative;min-height:460px;overflow:hidden}
+.space .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.space:hover .photo img{transform:scale(1.05)}
+.space .info{padding:clamp(30px,4vw,52px)}
+.space ul{list-style:none;margin-top:26px;display:grid;gap:16px}
+.space li{display:flex;gap:14px;align-items:flex-start;font-size:.95rem;color:#d9cfc2}
+.space li svg{width:22px;height:22px;color:var(--orange);flex:none;margin-top:2px}
+
+/* GALERIA */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:250px;gap:14px;margin-top:50px;grid-auto-flow:dense}
+.gal a{position:relative;overflow:hidden;border-radius:0;border:1px solid rgba(255,255,255,.06)}
+.gal a:nth-child(1){grid-row:span 2}
+.gal a:nth-child(4){grid-column:span 2}
+.gal a:nth-child(5){grid-row:span 2}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .6s}
+.gal a::after{content:attr(data-cap);position:absolute;left:0;right:0;bottom:0;padding:40px 18px 16px;background:linear-gradient(transparent,rgba(10,10,10,.9));font-family:"Lilita One";font-size:1.3rem;text-transform:uppercase;transform:translateY(100%);transition:transform .5s var(--ease)}
+.gal a:hover img{transform:scale(1.08)}
+.gal a:hover::after{transform:none}
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(5,5,5,.94);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+.lightbox.on{display:flex;animation:fade .3s}
+.lightbox img{max-height:90vh;max-width:min(1000px,100%);border-radius:0;box-shadow:0 30px 80px rgba(0,0,0,.8)}
+@keyframes fade{from{opacity:0}}
+
+/* LISTA / ANIVERSÁRIO */
+.call{position:relative;overflow:hidden;border-radius:0;padding:clamp(40px,7vw,80px);background:var(--orange);color:#140700;display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;isolation:isolate}
+.call::before{content:"";position:absolute;right:-90px;top:50%;width:440px;height:440px;transform:translateY(-50%);background:url(logo.svg) center/contain no-repeat;opacity:.12;z-index:-1;filter:grayscale(1) brightness(0)}
+.call .kicker{color:#140700}.call .kicker::before{background:#140700}
+.call h2{font-family:"Lilita One";font-size:clamp(2.6rem,6vw,4.6rem);line-height:.95;text-transform:uppercase;margin:16px 0 18px}
+.call p{font-weight:500;max-width:540px}
+.call .btns{display:flex;flex-direction:column;gap:12px}
+.btn-dark{background:#140700;color:var(--cream)}
+.btn-dark:hover{transform:translateY(-3px);box-shadow:0 14px 30px -10px rgba(0,0,0,.6)}
+.btn-ghost-dark{border:2px solid #140700;color:#140700}
+.btn-ghost-dark:hover{background:#140700;color:var(--orange)}
+
+/* LOCAL */
+.local{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:stretch}
+.addr{padding:36px;border-radius:0;background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;gap:24px}
+.addr .row{display:flex;gap:16px}
+.addr .row svg{width:24px;height:24px;color:var(--orange);flex:none;margin-top:3px}
+.addr .row b{display:block;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.addr .row p,.addr .row a{font-size:1.05rem;font-weight:600}
+.map{border-radius:0;overflow:hidden;border:1px solid var(--line);min-height:380px;background:var(--panel)}
+.map iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(1) invert(.92) sepia(.35) hue-rotate(-12deg) saturate(1.6) contrast(.9)}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
+details{border-bottom:1px solid var(--line);padding:22px 0}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;font-weight:700;font-size:1.05rem}
+summary::-webkit-details-marker{display:none}
+summary i{flex:none;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--orange);color:var(--orange);display:grid;place-items:center;font-style:normal;font-size:1.2rem;transition:transform .4s var(--ease),background .3s,color .3s}
+details[open] summary i{transform:rotate(45deg);background:var(--orange);color:#140700}
+details p{color:var(--muted);padding-top:12px}
+
+/* FOOTER */
+footer{background:#070707;border-top:1px solid var(--line);padding:70px 0 28px;text-align:center}
+footer .logo{width:120px;margin:0 auto 18px}
+footer .tag{font-family:Cinzel;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);font-size:.85rem}
+.social{display:flex;justify-content:center;gap:12px;margin:28px 0}
+.social a{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:background .3s,color .3s,transform .3s}
+.social a:hover{background:var(--orange);color:#140700;transform:translateY(-3px)}
+.social svg{width:20px;height:20px}
+.legal{margin-top:34px;padding-top:24px;border-top:1px solid rgba(255,255,255,.06);font-size:.78rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* whatsapp */
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.7);transition:transform .3s}
+.wa:hover{transform:scale(1.08)}
+.wa svg{width:30px;height:30px}
+.wa::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ring 2.2s infinite}
+@keyframes ring{to{transform:scale(1.6);opacity:0}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(46px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+
+/* responsive */
+@media (max-width:1000px){
+  .sabadao .grid,.space,.call,.local,.faq{grid-template-columns:1fr}
+  .fan{height:480px;max-width:520px;margin:0 auto;width:100%}
+  .space .photo{min-height:300px}
+  .call .btns{flex-direction:row;flex-wrap:wrap}
+}
+@media (max-width:820px){
+  .menu,.nav .nav-cta{display:none}
+  .burger{display:block}
+  .nav.open{background:rgba(10,10,10,.97)}
+  .nav.open .menu{display:flex;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;padding:8px 16px 22px;background:rgba(10,10,10,.97);border-bottom:1px solid var(--line)}
+  .nav.open .menu a{padding:16px 0;border-bottom:1px solid var(--line);opacity:1}
+  .rig .lamp:nth-child(n+5){display:none}
+  .ticket{grid-template-columns:1fr;text-align:center;gap:16px;margin-top:50px}
+  .ticket .when small{justify-content:center}
+  .nights{grid-template-columns:1fr}
+  .night{min-height:440px;padding:28px}
+  .gal{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+  .gal a:nth-child(4),.gal a:nth-child(5){grid-column:span 2}
+  .gal a:nth-child(5){grid-row:span 1}
+  .perks{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .hero .cta .btn,.call .btns .btn{flex:1 1 100%}
+  .cd div{min-width:58px}.cd b{font-size:1.6rem}
+  .lineup .genre{display:none}
+  .fan{height:400px}
+  .fan figure{width:68%}
+  .legal{justify-content:center;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Jack's Pub — início"><img src="logo.svg" alt=""><span>JACK’S PUB</span></a>
+    <nav class="menu" id="menu">
+      <a href="#sabadao">Sabadão</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#palco">Palco</a>
+      <a href="#espaco">O espaço</a>
+      <a href="#local">Como chegar</a>
+    </nav>
+    <a class="btn btn-orange nav-cta" href="https://minhaentrada.com.br/JACKS-PUB" target="_blank" rel="noopener">Ingressos</a>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-photo" role="img" aria-label="Salão do Jack's Pub com deck de madeira e luz âmbar"></div>
+  <div class="rig" aria-hidden="true"><span class="lamp"></span><span class="lamp"></span><span class="lamp"></span><span class="lamp"></span><span class="lamp"></span><span class="lamp"></span><span class="lamp"></span></div>
+
+  <div class="wrap hero-center">
+    <img class="hero-logo rv" src="logo.svg" alt="Jack's Pub">
+    <h1 class="rv d1">Noites <span>inesquecíveis</span></h1>
+    <div class="sub rv d2"><span><b>Quintas</b> &amp; <b>Sábados</b></span><span>a partir das 22h</span><span>Araranguá · SC</span></div>
+    <div class="cta rv d3">
+      <a class="btn btn-orange" href="https://minhaentrada.com.br/JACKS-PUB" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9a3 3 0 0 0 0 6v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3a3 3 0 0 0 0-6V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>
+        Ingresso antecipado</a>
+      <a class="btn btn-line" href="http://wa.me/message/CQTSIVGDQWJLP1" target="_blank" rel="noopener">Nome na lista</a>
+    </div>
+  </div>
+
+  <div class="ticket rv d3" aria-live="polite">
+    <div class="when">
+      <small>Próxima noite</small>
+      <strong id="nextName">Sabadão do Jack’s</strong>
+      <span id="nextDate">—</span>
+    </div>
+    <div class="cd">
+      <div><b data-u="d">00</b><span>dias</span></div>
+      <div><b data-u="h">00</b><span>horas</span></div>
+      <div><b data-u="m">00</b><span>min</span></div>
+      <div><b data-u="s">00</b><span>seg</span></div>
+    </div>
+    <a class="btn btn-orange" href="https://minhaentrada.com.br/JACKS-PUB" target="_blank" rel="noopener">Garantir</a>
+  </div>
+</section>
+
+
+<!-- SABADÃO -->
+<section class="sec slats sabadao" id="sabadao">
+  <div class="wrap grid">
+    <div>
+      <span class="kicker rv">Todo sábado · 22h</span>
+      <h2 class="flyer-type rv d1"><small>O famoso</small>Sabadão<br>do Jack’s</h2>
+      <div class="ribbon rv d2">A noite mais esperada da semana</div>
+      <p class="lead rv d2">Palco montado, line-up de peso e casa lotada do começo ao fim. É vanerão, é sertanejo, é a galera de Araranguá e região cantando junto até o último acorde.</p>
+      <div class="perks rv d3">
+        <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg><div><b>Elas com nome na lista</b><span>condição especial até meia-noite*</span></div></div>
+        <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h14l-1.5 15a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2z"/><path d="M5.5 8h13"/></svg><div><b>Caipirinha em dobro</b><span>pra quem chega cedo*</span></div></div>
+        <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><div><b>Bandas ao vivo</b><span>vanerão e sertanejo de verdade</span></div></div>
+        <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9a3 3 0 0 0 0 6v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3a3 3 0 0 0 0-6V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/></svg><div><b>Antecipado mais barato</b><span>pela Minha Entrada</span></div></div>
+      </div>
+      <p class="note rv">*Promoções variam a cada evento — confira sempre o flyer da semana no Instagram.</p>
+      <a class="btn btn-orange rv" href="https://minhaentrada.com.br/JACKS-PUB" target="_blank" rel="noopener">Quero ir no Sabadão</a>
+    </div>
+    <div class="fan rv d2" aria-label="Flyers recentes do Sabadão do Jack's">
+      <figure><img src="img/flyer2.jpg" alt="Flyer do Sabadão do Jack's" loading="lazy"></figure>
+      <figure><img src="img/flyer3.jpg" alt="Flyer: O maior Sabadão do ano com Grupo Solto, Jonathan Pacheco e DJ Caroliza" loading="lazy"></figure>
+      <figure><img src="img/flyer1.jpg" alt="Flyer: Sabadão do Jack's com Tradição da Vaneira e Cavaleiros da Vanera" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="sec" id="agenda">
+  <div class="wrap">
+    <span class="kicker rv">Agenda fixa</span>
+    <h2 class="title rv d1">Duas noites por semana.<br><em>Nenhuma igual à outra.</em></h2>
+    <div class="nights">
+      <article class="night rv" data-dow="4">
+        <div class="bg" style="background-image:url(img/pista.jpg)"></div>
+        <span class="tag">Quinta-feira</span><span class="tag hot">Próxima</span>
+        <h3 class="flyer-type day">Quinta<br>no Jack’s</h3>
+        <div class="hour">A PARTIR DAS 22H</div>
+        <p>O fim de semana começa mais cedo. Chama a turma, pede o chopp e aproveita a noite no meio da semana.</p>
+      </article>
+      <article class="night rv d1" data-dow="6">
+        <div class="bg" style="background-image:url(img/show.jpg)"></div>
+        <span class="tag">Sábado</span><span class="tag hot">Próxima</span>
+        <h3 class="flyer-type day">Sabadão<br>do Jack’s</h3>
+        <div class="hour">A PARTIR DAS 22H</div>
+        <p>A noite principal da casa: atração ao vivo, pista cheia e aquele clima que só o Jack’s tem.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PALCO -->
+<section class="sec slats" id="palco">
+  <div class="wrap">
+    <span class="kicker rv">Já passaram pelo nosso palco</span>
+    <h2 class="title rv d1">Quem sobe no palco<br><em>faz a casa tremer.</em></h2>
+    <ul class="lineup">
+      <li class="rv"><span class="name">Cavaleiros da Vanera</span><span class="genre">Vanerão</span></li>
+      <li class="rv"><span class="name">Tradição da Vaneira</span><span class="genre">Vanerão</span></li>
+      <li class="rv"><span class="name">Jonathan Pacheco</span><span class="genre">Sertanejo</span></li>
+      <li class="rv"><span class="name">Grupo Solto</span><span class="genre">Ao vivo</span></li>
+      <li class="rv"><span class="name">DJ Caroliza</span><span class="genre">DJ</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ESPAÇO -->
+<section class="sec" id="espaco">
+  <div class="wrap">
+    <div class="space rv">
+      <div class="photo"><img src="img/capa.jpg" alt="Salão do Jack's Pub: deck de madeira, mesas e palco" loading="lazy"></div>
+      <div class="info">
+        <span class="kicker">O espaço</span>
+        <h2 class="title" style="font-size:clamp(2rem,4vw,3.1rem)">Madeira, luz baixa e <em>chopp gelado.</em></h2>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Palco com som e luz de show</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h14l-1.5 15a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2z"/><path d="M5.5 8h13"/></svg>Bar completo: chopp, drinks e doses</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="10" width="18" height="4" rx="1"/><path d="M6 14v6M18 14v6"/></svg>Mesas pra curtir com a turma</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s-7-6.2-7-12a7 7 0 1 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Jardim das Avenidas, em Araranguá</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="sec" id="galeria" style="padding-top:0">
+  <div class="wrap">
+    <span class="kicker rv">@jackspubboficial</span>
+    <h2 class="title rv d1">Quem foi, <em>viveu.</em></h2>
+    <div class="gal">
+      <a class="rv" href="img/show.jpg" data-cap="No palco"><img src="img/show.jpg" alt="Cantor no palco do Jack's Pub" loading="lazy"></a>
+      <a class="rv d1" href="img/pista.jpg" data-cap="Pista lotada"><img src="img/pista.jpg" alt="Pista lotada com luzes de show" loading="lazy"></a>
+      <a class="rv d2" href="img/fila.jpg" data-cap="A fila já diz tudo"><img src="img/fila.jpg" alt="Fila na entrada do Jack's Pub" loading="lazy"></a>
+      <a class="rv d1" href="img/capa.jpg" data-cap="Nosso salão"><img src="img/capa.jpg" alt="Salão do Jack's Pub" loading="lazy"></a>
+      <a class="rv d2" href="img/flyer1.jpg" data-cap="Sabadão"><img src="img/flyer1.jpg" alt="Flyer do Sabadão do Jack's" loading="lazy" style="object-position:top"></a>
+    </div>
+    <div style="text-align:center;margin-top:40px" class="rv">
+      <a class="btn btn-line" href="https://www.instagram.com/jackspubboficial/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        Seguir no Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- LISTA / ANIVERSÁRIO -->
+<section style="padding-bottom:clamp(90px,12vw,150px)">
+  <div class="wrap">
+    <div class="call rv">
+      <div>
+        <span class="kicker">Lista &amp; aniversários</span>
+        <h2>Bota seu nome na lista</h2>
+        <p>Vai comemorar aniversário ou quer garantir a entrada da galera? Chama no WhatsApp, coloca os nomes na lista e aproveita as condições da noite.</p>
+      </div>
+      <div class="btns">
+        <a class="btn btn-dark" href="http://wa.me/message/CQTSIVGDQWJLP1" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0zm5.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+          Chamar no WhatsApp</a>
+        <a class="btn btn-ghost-dark" href="tel:+5548999742078">(48) 99974-2078</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL -->
+<section class="sec slats" id="local">
+  <div class="wrap">
+    <span class="kicker rv">Como chegar</span>
+    <h2 class="title rv d1">Te esperamos <em>no Jack’s.</em></h2>
+    <div class="local">
+      <div class="addr rv">
+        <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s-7-6.2-7-12a7 7 0 1 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <div><b>Endereço</b><p>Av. Coronel João Fernandes, 2475<br>Jardim das Avenidas · Araranguá/SC<br>CEP 88905-494</p></div></div>
+        <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div><b>Funcionamento</b><p>Quintas e sábados<br>a partir das 22h</p></div></div>
+        <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <div><b>Informações</b><a href="tel:+5548999742078">(48) 99974-2078</a></div></div>
+        <a class="btn btn-orange" href="https://www.google.com/maps/dir/?api=1&destination=-28.9514026,-49.4655793" target="_blank" rel="noopener">Traçar rota</a>
+      </div>
+      <div class="map rv d1">
+        <iframe title="Mapa: Jack's Pub em Araranguá" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=-28.9514026,-49.4655793&z=17&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap faq">
+    <div>
+      <span class="kicker rv">Dúvidas</span>
+      <h2 class="title rv d1">Antes de <em>sair de casa.</em></h2>
+      <p class="lead rv d2">Ficou alguma dúvida? Chama no WhatsApp que a equipe responde.</p>
+    </div>
+    <div class="rv d1">
+      <details open><summary>Quais dias o Jack’s abre?<i>+</i></summary><p>Todas as quintas e sábados, a partir das 22h.</p></details>
+      <details><summary>Onde compro ingresso antecipado?<i>+</i></summary><p>Na Minha Entrada (minhaentrada.com.br/JACKS-PUB). O antecipado costuma sair mais barato que na portaria e garante sua entrada nas noites lotadas.</p></details>
+      <details><summary>Como coloco meu nome na lista?<i>+</i></summary><p>Pelo WhatsApp (48) 99974-2078. As condições da lista mudam a cada evento e saem no flyer da semana.</p></details>
+      <details><summary>Posso comemorar meu aniversário?<i>+</i></summary><p>Pode! Fale com a gente no WhatsApp pra montar a lista dos convidados.</p></details>
+      <details><summary>Qual a idade mínima?<i>+</i></summary><p>Entrada somente para maiores de 18 anos, com documento oficial com foto.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img class="logo" src="logo.svg" alt="Jack's Pub">
+    <div class="tag">Noites inesquecíveis</div>
+    <div class="social">
+      <a href="https://www.instagram.com/jackspubboficial/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <a href="https://www.facebook.com/jackspubboficial/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.5V11H7v4h3v9h4v-9h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
+      <a href="http://wa.me/message/CQTSIVGDQWJLP1" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0zm5.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a>
+    </div>
+    <p style="color:var(--muted);font-size:.9rem">Av. Coronel João Fernandes, 2475 · Araranguá/SC · (48) 99974-2078</p>
+    <div class="legal"><span>© <span id="y"></span> Jack’s Pub. Todos os direitos reservados.</span><span>Proibida a venda de bebidas alcoólicas para menores de 18 anos. Se beber, não dirija.</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="http://wa.me/message/CQTSIVGDQWJLP1" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0zm5.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></a>
+
+<div class="lightbox" id="lb" role="dialog" aria-label="Foto ampliada"><img alt=""></div>
+
+<script>
+(() => {
+  const nav = document.getElementById('nav'), burger = document.getElementById('burger');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  burger.onclick = () => burger.setAttribute('aria-expanded', nav.classList.toggle('open'));
+  document.querySelectorAll('#menu a').forEach(a => a.onclick = () => { nav.classList.remove('open'); burger.setAttribute('aria-expanded', false); });
+
+  // reveal
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12, rootMargin:'0px 0px -40px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // próxima noite (quinta=4 / sábado=6, 22h; casa aberta até ~5h)
+  const names = {4:'Quinta no Jack’s', 6:'Sabadão do Jack’s'};
+  const pad = n => String(n).padStart(2,'0');
+  const $ = s => document.querySelector(s);
+  const tick = () => {
+    const now = new Date(); let next, open = false;
+    for (let i = -1; i < 8; i++) {
+      const d = new Date(now); d.setDate(now.getDate() + i); d.setHours(22,0,0,0);
+      const end = new Date(d.getTime() + 7*3600e3);
+      if ((d.getDay() === 4 || d.getDay() === 6) && end > now) { next = d; open = now >= d; break; }
+    }
+    if (!next) return;
+    $('#nextName').textContent = open ? 'Rolando agora!' : names[next.getDay()];
+    $('#nextDate').textContent = open ? names[next.getDay()] + ' · cola com a gente'
+      : next.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'}) + ' · 22h';
+    const t = Math.max(0, next - now) / 1000;
+    const v = {d:Math.floor(t/86400), h:Math.floor(t%86400/3600), m:Math.floor(t%3600/60), s:Math.floor(t%60)};
+    for (const k in v) $(`[data-u="${k}"]`).textContent = pad(v[k]);
+    document.querySelectorAll('.night').forEach(n => n.classList.toggle('is-next', +n.dataset.dow === next.getDay()));
+  };
+  tick(); setInterval(tick, 1000);
+
+  // lightbox
+  const lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
+  document.querySelectorAll('.gal a').forEach(a => a.onclick = e => { e.preventDefault(); lbImg.src = a.getAttribute('href'); lbImg.alt = a.querySelector('img').alt; lb.classList.add('on'); });
+  lb.onclick = () => lb.classList.remove('on');
+  addEventListener('keydown', e => e.key === 'Escape' && lb.classList.remove('on'));
+
+  // parallax suave na capa
+  const photo = document.querySelector('.hero-photo');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    addEventListener('scroll', () => { if (scrollY < innerHeight) photo.style.translate = `0 ${scrollY * .3}px`; }, {passive:true});
+  }
+
+  document.getElementById('y').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
